@@ -3,6 +3,7 @@ import { McpClient } from "./mcp.js";
 
 // Hosted, read-only, no key. Override with MCP_URL to try another server.
 const DEFAULT_MCP_URL = "https://mcp.priors.trade/mcp";
+const SHOW = Number(process.env.SHOW_TOOLS || 10);
 
 async function main() {
   const registryUrl = process.env.REGISTRY_URL || REGISTRY_URL;
@@ -24,9 +25,10 @@ async function main() {
   console.log(`   Connected to ${name}`);
 
   const toolList = await client.listTools();
-  console.log(`   ${toolList.length} tools available:`);
-  for (const t of toolList) {
-    const line = (t.description || "").split("\n")[0].slice(0, 90);
+  console.log(`   ${toolList.length} tools available${toolList.length > SHOW ? ` (showing ${SHOW})` : ""}:`);
+  for (const t of toolList.slice(0, SHOW)) {
+    const first = (t.description || "").split("\n")[0];
+    const line = first.length > 70 ? `${first.slice(0, 70).trimEnd()}...` : first;
     console.log(`   - ${t.name}${line ? `: ${line}` : ""}`);
   }
   console.log("\nDone. Nothing was signed and no key was used.");

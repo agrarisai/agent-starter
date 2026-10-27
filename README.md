@@ -18,17 +18,21 @@ cd agent-starter
 npm start
 ```
 
-Example output:
+Example output (from a real run):
 
 ```
 1) Reading the Agraris registry: https://agraris.xyz/api/agents.json
    32 listings (23 agents, 9 tools)
-   MCP servers listed: Priors MCP, ...
+   MCP servers listed: Priors MCP
 
 2) Connecting to an MCP server: https://mcp.priors.trade/mcp
-   Connected to ...
-   N tools available:
-   - ...
+   Connected to priors-read
+   30 tools available (showing 10):
+   - agent_record: Show a Priors agent's full credit record on Robinhood Chain: ...
+   - score_of: Look up any agent's Priors score (0 to 1000) and repayment record ...
+   ...
+
+Done. Nothing was signed and no key was used.
 ```
 
 By default it talks to the hosted read-only endpoint of [Priors MCP](https://github.com/priors-agents/priors). Point it at another server with an environment variable:
@@ -36,6 +40,8 @@ By default it talks to the hosted read-only endpoint of [Priors MCP](https://git
 ```bash
 MCP_URL=https://example.com/mcp npm start
 ```
+
+Set `SHOW_TOOLS=30` to print more tools.
 
 ## What is in here
 
