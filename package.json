@@ -1,0 +1,12 @@
+{
+  "name": "agent-starter",
+  "version": "0.1.0",
+  "description": "Minimal starter for agents on Robinhood Chain: read the Agraris registry and talk to a listed MCP server.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test test/*.test.js"
+  }
+}
